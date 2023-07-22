@@ -1,0 +1,21 @@
+{
+  "name": "async-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwards19/async-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwards19/async-node/issues"
+  },
+  "homepage": "https://github.com/edwards19/async-node#readme"
+}
