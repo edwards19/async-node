@@ -1,39 +1,32 @@
-import { writeFile } from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname, sep } from 'path';
+import { writeFile } from 'fs/promises';
 
-const __dirname = dirname(fileURLToPath(import.meta.url)) + sep;
+const quizAPI = 'https://opentdb.com/api.php?type=multiple&amount=1&category=',
+	category = [9, 19, 30],
+	outfile = './data/questions.json';
 
-const p1 = fetch('https://opentdb.com/api.php?type=multiple&amount=1&category=9')
-	.then((res) => res.json())
-	.then((data) => {
-		return data;
-	});
-const p2 = fetch('https://opentdb.com/api.php?type=multiple&amount=1&category=18')
-	.then((res) => res.json())
-	.then((data) => {
-		return data;
-	});
-const p3 = fetch('https://opentdb.com/api.php?type=multiple&amount=1&category=30')
-	.then((res) => res.json())
-	.then((data) => {
-		return data;
-	});
+// fetch question in all categories (multiple asynchronous Promises)
+const quizRes = await Promise.allSettled(category.map((c) => fetch(quizAPI + c)));
 
-const results = Promise.allSettled([p1, p2, p3]).then((data) => {
-	console.log(data[0].value, data[1].value, data[2].value);
-	const questions = [];
-	if (data[0].status === 'fulfilled' && data[1].status === 'fulfilled' && data[2].status === 'fulfilled') {
-		questions.push(data[0].value.results[0], data[1].value.results[0], data[2].value.results[0]);
-	} else {
-        throw new Error("An error occured")
-    }
-	writeFile(path.join(__dirname, 'data', 'questions.json'), JSON.stringify(questions, null, 2), (err) => {
-		if (err) console.log(err);
-		console.log('The file has been saved!');
-	});
-    return questions;
-});
+// convert JSON to object (multiple asynchronous Promises)
+const quizObj = await Promise.allSettled(
+	quizRes.filter((q) => q && q.status === 'fulfilled' && q.value).map((q) => q.value.json())
+);
 
-console.log(await results);
+// get first result and filter failures
+const quizData = quizObj
+	.filter((q) => q && q.status === 'fulfilled' && q.value && q.value.results && q.value.results[0])
+	.map((q) => q.value.results[0]);
+
+console.log(`fetched ${quizData.length} valid quiz questions`);
+
+try {
+	await writeFile(outfile, JSON.stringify(quizData, null, 2));
+	console.log(`${outfile} saved`);
+} catch (err) {
+	console.log(`${outfile} not saved:\n`, err);
+}
+
+
+
+
+

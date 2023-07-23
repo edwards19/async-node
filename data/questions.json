@@ -2,37 +2,37 @@
   {
     "category": "General Knowledge",
     "type": "multiple",
-    "difficulty": "easy",
-    "question": "Where is the train station &quot;Llanfair&shy;pwllgwyngyll&shy;gogery&shy;chwyrn&shy;drobwll&shy;llan&shy;tysilio&shy;gogo&shy;goch&quot;?",
-    "correct_answer": "Wales",
+    "difficulty": "medium",
+    "question": "What was the name given to Japanese military dictators who ruled the country through the 12th and 19th Century?",
+    "correct_answer": "Shogun",
     "incorrect_answers": [
-      "Moldova",
-      "Czech Republic",
-      "Denmark"
+      "Ninja",
+      "Samurai",
+      "Shinobi"
     ]
   },
   {
-    "category": "Science: Computers",
+    "category": "Science: Mathematics",
     "type": "multiple",
     "difficulty": "medium",
-    "question": "What is known as &quot;the brain&quot; of the Computer?",
-    "correct_answer": "Central Processing Unit",
+    "question": "Which greek mathematician ran through the streets of Syracuse naked while shouting &quot;Eureka&quot; after discovering the principle of displacement?",
+    "correct_answer": "Archimedes",
     "incorrect_answers": [
-      "Motherboard",
-      "Graphics Processing Unit",
-      "Keyboard"
+      "Euclid",
+      "Homer",
+      "Eratosthenes"
     ]
   },
   {
     "category": "Science: Gadgets",
     "type": "multiple",
     "difficulty": "medium",
-    "question": "Which company developed the Hololens?",
-    "correct_answer": "Microsoft",
+    "question": "Out of all of the NASA Space Shuttles, which 2 have been destroyed in disasters?",
+    "correct_answer": "Challenger and Columbia",
     "incorrect_answers": [
-      "HTC",
-      "Oculus",
-      "Tobii"
+      "Enterprise and Atlantis",
+      "Discovery and Endeavour",
+      "None of the Above"
     ]
   }
 ]
